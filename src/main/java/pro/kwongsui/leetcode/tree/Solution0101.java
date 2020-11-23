@@ -1,6 +1,6 @@
 package pro.kwongsui.leetcode.tree;
 
-public class Solution1315 {
+public class Solution0101 {
 
   public static boolean isSymmetric(TreeNode root) {
     if (root == null) {

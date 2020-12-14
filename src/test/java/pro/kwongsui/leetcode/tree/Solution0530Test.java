@@ -1,14 +1,13 @@
 package pro.kwongsui.leetcode.tree;
 
-import org.junit.jupiter.api.Assertions;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.converter.ConvertWith;
 import org.junit.jupiter.params.provider.CsvSource;
-import pro.kwongsui.leetcode.util.IntArrayConverter;
+import pro.kwongsui.leetcode.util.IntegerArrayConverter;
 
 class Solution0530Test {
-
-  Solution0530 solution = new Solution0530();
 
   @ParameterizedTest
   @CsvSource({
@@ -17,7 +16,8 @@ class Solution0530Test {
       "'2,1', 1",
       "'1,null,5,3', 2",
       "'2,1,3,1', 0"})
-  void getMinimumDifference(@ConvertWith(IntArrayConverter.class) Integer[] input, int expected) {
-    Assertions.assertEquals(expected, solution.getMinimumDifference(BinaryTree.create(input)));
+  void getMinimumDifference(
+      @ConvertWith(IntegerArrayConverter.class) Integer[] input, int expected) {
+    assertEquals(expected, new Solution0530().getMinimumDifference(BinaryTree.create(input)));
   }
 }

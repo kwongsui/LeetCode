@@ -5,9 +5,6 @@ public class Solution0572 {
   private StringBuilder builder = new StringBuilder();
 
   public boolean isSubtree(TreeNode s, TreeNode t) {
-    if(!(s == null && t == null)) {
-
-    }
     concat(s);
     String S = builder.toString();
     builder = new StringBuilder();

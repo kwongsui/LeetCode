@@ -6,7 +6,7 @@ public class Solution0108 {
     return convert(nums, 0, nums.length - 1);
   }
 
-  private static TreeNode convert(int[] nums, int low, int high) {
+  public static TreeNode convert(int[] nums, int low, int high) {
     if (low > high) {
       return null;
     }

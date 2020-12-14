@@ -30,7 +30,7 @@ public class Solution0071 {
 
     public String simplifyPath2(String path) {
         String[] seq = path.split("/");
-        Deque<String> stack = new LinkedList<>();
+        Deque<String> stack = new ArrayDeque<>();
         stack.push("/");
         if (seq.length > 1) {
             for (int i = 1; i < seq.length; i++) {

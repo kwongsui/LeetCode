@@ -1,5 +1,6 @@
 package pro.kwongsui.leetcode.stack;
 
+import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,7 +12,7 @@ public class Solution0020 {
    * 普通解法：栈存左括号
    */
   public boolean isValid(String s) {
-    Deque<Character> stack = new LinkedList<>();
+    Deque<Character> stack = new ArrayDeque<>();
     for (char ch : s.toCharArray()) {
       if (ch == '(' || ch == '[' || ch == '{') {
         stack.push(ch);
@@ -39,7 +40,7 @@ public class Solution0020 {
     if (s.length() % 2 != 0) {
       return false;
     }
-    Deque<Character> stack = new LinkedList<>();
+    Deque<Character> stack = new ArrayDeque<>();
     char[] chars = s.toCharArray();
     for (char ch : chars) {
       switch (ch) {
@@ -68,7 +69,7 @@ public class Solution0020 {
     if (s.length() % 2 != 0) {
       return false;
     }
-    Deque<Character> stack = new LinkedList<>();
+    Deque<Character> stack = new ArrayDeque<>();
     Map<Character, Character> map = new HashMap<>() {
       {
         put(')', '(');

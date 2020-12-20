@@ -1,11 +1,11 @@
-package pro.kwongsui.leetcode.recursion;
+package pro.kwongsui.leetcode.array;
 
 public class SolutionCtCI1611 {
 
   /**
    * 数学规律求解
    */
-  public int[] divingBoard1(int shorter, int longer, int k) {
+  public int[] divingBoard3(int shorter, int longer, int k) {
     if (k == 0) {
       return new int[0]; // new int[]{} 长度为1，值为0的数组
     }
@@ -24,7 +24,7 @@ public class SolutionCtCI1611 {
   /**
    * 递归不一定是方法自身调用自身，数组元素值通过上一个元素值得到，亦可视作一种递归形式
    */
-  public int[] divingBoard2(int shorter, int longer, int k) {
+  public int[] divingBoard(int shorter, int longer, int k) {
     if (k == 0) {
       return new int[0]; // new int[]{} 长度为1，值为0的数组
     }
@@ -44,7 +44,7 @@ public class SolutionCtCI1611 {
   /**
    * 常规递归：k很大时，栈溢出
    */
-  public int[] divingBoard(int shorter, int longer, int k) {
+  public int[] divingBoard1(int shorter, int longer, int k) {
     if (k == 0) {
       return new int[0]; // new int[]{} 长度为1，值为0的数组
     }
@@ -54,18 +54,7 @@ public class SolutionCtCI1611 {
     }
 
     int[] ret = new int[k + 1];
-    if (k == 1) {
-      ret[0] = shorter;
-      ret[1] = longer;
-    } else {
-      // 返回数组，递归深度值不能太大
-//      int[] retKMinusOne = divingBoard(shorter, longer, k - 1);
-//      for (int i = 0; i < k; i++) {
-//        ret[i] = retKMinusOne[i] + shorter;
-//      }
-//      ret[k] = retKMinusOne[k - 1] + longer;
-      helper(ret, shorter, longer, k);
-    }
+    helper(ret, shorter, longer, k);
     return ret;
   }
 

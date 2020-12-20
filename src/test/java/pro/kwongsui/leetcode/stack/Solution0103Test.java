@@ -15,8 +15,8 @@ class Solution0103Test {
     @ParameterizedTest
     @CsvSource({
         "'', ''",
-        "'3,9,20,null,null,15,7', '3|20 9|15 7'",
-        "'3,9,20,2,16,15,7', '3|20 9|2 16 15 7'"
+        "'3,9,20,null,null,15,7', '3|20,9|15,7'",
+        "'3,9,20,2,16,15,7', '3|20,9|2,16,15,7'"
     })
     void zigzagLevelOrder(
         @ConvertWith(IntegerArrayConverter.class) Integer[] input,

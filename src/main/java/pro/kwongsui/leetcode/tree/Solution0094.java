@@ -1,4 +1,4 @@
-package pro.kwongsui.leetcode.stack;
+package pro.kwongsui.leetcode.tree;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

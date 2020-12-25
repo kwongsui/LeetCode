@@ -12,31 +12,30 @@ public class Solution0652 {
         if (root == null) {
             return list;
         }
-        Map<TreeNode, String> nodeToSerial = new HashMap<>();
-        Map<String, Integer> serialToCnt = new HashMap<>();
-        serialize(root, list, nodeToSerial, serialToCnt, new StringBuilder());
+        Map<String, Integer> serialToId = new HashMap<>();
+        Map<Integer, Integer> idToCnt = new HashMap<>();
+        int[] uid = new int[]{1};
+        serialize(root, list, serialToId, idToCnt, uid, new StringBuilder());
         return list;
     }
 
-    private void serialize(TreeNode node, List<TreeNode> list,
-        Map<TreeNode, String> nodeToSerial, Map<String, Integer> serialToCnt,
-        StringBuilder builder) {
+    private int serialize(TreeNode node, List<TreeNode> list,
+        Map<String, Integer> serialToId, Map<Integer, Integer> idToCnt,
+        int[] uid, StringBuilder builder) {
         if (node == null) {
-            return;
+            return 0;
         }
-        serialize(node.left, list, nodeToSerial, serialToCnt, builder);
-        serialize(node.right, list, nodeToSerial, serialToCnt, builder);
-        String serial = builder.append(nodeToSerial.getOrDefault(node.left, "#"))
-            .append(",")
-            .append(nodeToSerial.getOrDefault(node.right, "#"))
-            .append(",")
+        int l = serialize(node.left, list, serialToId, idToCnt, uid, builder);
+        int r = serialize(node.right, list, serialToId, idToCnt, uid, builder);
+        String serial = builder.append(l).append(",").append(r).append(",")
             .append(node.val).toString();
-        nodeToSerial.put(node, serial);
-        serialToCnt.put(serial, serialToCnt.getOrDefault(serial, 0) + 1);
-        if (serialToCnt.get(serial) == 2) {
+        int id = serialToId.computeIfAbsent(serial, k -> uid[0]++);
+        idToCnt.put(id, idToCnt.getOrDefault(id, 0) + 1);
+        if (idToCnt.get(id) == 2) {
             list.add(node);
         }
         builder.delete(0, builder.length());
+        return id;
     }
 
     public List<TreeNode> findDuplicateSubtrees1(TreeNode root) {
@@ -45,22 +44,24 @@ public class Solution0652 {
             return list;
         }
         Map<String, Integer> serialToCnt = new HashMap<>();
-        serialize1(root, list, serialToCnt);
+        serialize1(root, list, serialToCnt, new StringBuilder());
         return list;
     }
 
     private String serialize1(TreeNode node, List<TreeNode> list,
-        Map<String, Integer> serialToCnt) {
+        Map<String, Integer> serialToCnt, StringBuilder builder) {
         if (node == null) {
             return "#";
         }
-        String l = serialize1(node.left, list, serialToCnt);
-        String r = serialize1(node.right, list, serialToCnt);
-        String serial = l + "," + r + "," + node.val;
+        String l = serialize1(node.left, list, serialToCnt, builder);
+        String r = serialize1(node.right, list, serialToCnt, builder);
+        String serial = builder.append(l).append(",").append(r).append(",")
+            .append(node.val).toString();
         serialToCnt.put(serial, serialToCnt.getOrDefault(serial, 0) + 1);
         if (serialToCnt.get(serial) == 2) {
             list.add(node);
         }
+        builder.delete(0, builder.length());
         return serial;
     }
 }

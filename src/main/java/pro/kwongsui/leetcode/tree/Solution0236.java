@@ -44,9 +44,16 @@ public class Solution0236 {
         if (root == null || root == p || root == q) {
             return root;
         }
-        TreeNode left = lowestCommonAncestor(root.left, p, q);
-        TreeNode right = lowestCommonAncestor(root.right, p, q);
-        return left == null ? right : right == null ? left : root;
+        TreeNode left = lowestCommonAncestor3(root.left, p, q);
+        TreeNode right = lowestCommonAncestor3(root.right, p, q);
+        if (left == null) {
+            return right; // 包括了 left 和 right 均为 null 的情况
+        }
+        if (right == null) {
+            return left;
+        }
+        return root;
+//        return left == null ? right : right == null ? left : root;
     }
 
     public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q) {

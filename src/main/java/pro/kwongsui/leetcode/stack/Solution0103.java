@@ -19,7 +19,7 @@ public class Solution0103 {
         if (root == null) {
             return;
         }
-        if (level > list.size() - 1) {
+        if (level == list.size()) {
             list.add(new LinkedList<>());
         }
         if (level % 2 == 0) {
@@ -113,7 +113,7 @@ public class Solution0103 {
         }
         Deque<TreeNode> queue = new LinkedList<>();
         Deque<TreeNode> stack = new ArrayDeque<>();
-        queue.offer(root);
+        queue.offerFirst(root);
         while (!queue.isEmpty() || !stack.isEmpty()) {
             List<Integer> l = new ArrayList<>();
             if (!queue.isEmpty()) {
@@ -132,10 +132,10 @@ public class Solution0103 {
                     TreeNode treeNode = stack.pop();
                     l.add(treeNode.val);
                     if (treeNode.right != null) {
-                        queue.addFirst(treeNode.right);
+                        queue.offerFirst(treeNode.right);
                     }
                     if (treeNode.left != null) {
-                        queue.addFirst(treeNode.left);
+                        queue.offerFirst(treeNode.left);
                     }
                 }
             }

@@ -24,8 +24,9 @@ public class Solution0148 {
                 ListNode left = q;
                 ListNode right = split(left, step);
                 q = split(right, step);
+                // p 指针用于将两两合并后的链表串联起来，否则下次步进找不到右边部分
                 p.next = merge(left, right);
-                // 可将哨兵节点传入 merge 方法，在合并过程中向后传递，不用合并后从头开始向后传递
+                // 可将 p 指针传入 merge 方法，在合并过程中向后传递，不用合并后从头开始向后传递
                 while (p.next != null) {
                     p = p.next;
                 }
@@ -67,7 +68,7 @@ public class Solution0148 {
             return head;
         }
         /*
-         * 左开右闭找中点并分解
+         * 左闭右开找中点并分解
          */
         ListNode mid = middle(head, tail);
         ListNode left = sortList(head, mid);

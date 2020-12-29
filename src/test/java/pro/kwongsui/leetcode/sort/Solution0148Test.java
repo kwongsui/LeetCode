@@ -19,7 +19,8 @@ class Solution0148Test {
         "'1', '1'",
         "'4,2,1,3', '1,2,3,4'",
         "'-1,5,3,4,0', '-1,0,3,4,5'",
-        "'3,8,9,2,3,4,0,7,4,2,0,1', '0,0,1,2,2,3,3,4,4,7,8,9'"
+        "'3,8,9,2,3,4,0,7,4,2,0,1', '0,0,1,2,2,3,3,4,4,7,8,9'",
+        "'6,9,0,3,1,2,5,4,8,7', '0,1,2,3,4,5,6,7,8,9'"
     })
     void sortList(@ConvertWith(ListNodeConverter.class) ListNode input,
         @ConvertWith(IntegerArrayConverter.class) Integer[] expected) {

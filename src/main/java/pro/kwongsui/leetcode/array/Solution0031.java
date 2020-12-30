@@ -10,6 +10,17 @@ public class Solution0031 {
       i--;
     }
     if(i >= 0) {
+      swap(nums, i, search(nums, i));
+    }
+    reverse(nums, i + 1, nums.length - 1);
+  }
+
+  public void nextPermutation2(int[] nums) {
+    int i = nums.length - 2;
+    while (i >= 0 && nums[i] >= nums[i + 1]) {
+      i--;
+    }
+    if(i >= 0) {
       int j = nums.length - 1;
       while(j >= 0 && nums[i] >= nums[j]) {
         j--;
@@ -27,7 +38,7 @@ public class Solution0031 {
     }
   }
 
-  public void nextPermutation2(int[] nums) {
+  public void nextPermutation1(int[] nums) {
     boolean next = false;
     for (int i = nums.length - 1; i > 0; i--) {
       if (nums[i] > nums[i - 1]) {
@@ -40,17 +51,6 @@ public class Solution0031 {
     if (!next) {
       Arrays.sort(nums);
     }
-  }
-
-  public void nextPermutation3(int[] nums) {
-    int i = nums.length - 2;
-    while (i >= 0 && nums[i] >= nums[i + 1]) {
-      i--;
-    }
-    if(i >= 0) {
-      swap(nums, i, search(nums, i));
-    }
-    reverse(nums, i + 1, nums.length - 1);
   }
 
   /**

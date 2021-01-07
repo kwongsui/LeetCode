@@ -1,4 +1,4 @@
-package pro.kwongsui.leetcode.dico;
+package pro.kwongsui.leetcode.dc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

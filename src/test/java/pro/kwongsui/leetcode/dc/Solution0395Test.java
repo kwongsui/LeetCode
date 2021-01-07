@@ -1,10 +1,9 @@
-package pro.kwongsui.leetcode.dico;
+package pro.kwongsui.leetcode.dc;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import pro.kwongsui.leetcode.dico.Solution0395;
 
 class Solution0395Test {
 

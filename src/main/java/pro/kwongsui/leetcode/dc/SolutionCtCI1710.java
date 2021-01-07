@@ -1,4 +1,4 @@
-package pro.kwongsui.leetcode.dico;
+package pro.kwongsui.leetcode.dc;
 
 public class SolutionCtCI1710 {
 

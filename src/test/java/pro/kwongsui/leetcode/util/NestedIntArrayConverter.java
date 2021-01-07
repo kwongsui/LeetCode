@@ -17,12 +17,14 @@ public class NestedIntArrayConverter implements ArgumentConverter {
                 return new int[0][];
             }
             String[] from = ((String) source).split("\\|");
-            int[][] arr = new int[from.length][2];
+            int[][] arr = new int[from.length][];
             if (from.length != 0) {
                 for (int i = 0; i < from.length; i++) {
-                    int[] to = new int[2];
-                    to[0] = Integer.parseInt(from[i].split(",")[0]);
-                    to[1] = Integer.parseInt(from[i].split(",")[1]);
+                    String[] elements = from[i].split(",");
+                    int[] to = new int[elements.length];
+                    for (int j = 0; j < to.length; j++) {
+                        to[j] = Integer.parseInt(elements[j]);
+                    }
                     arr[i] = to;
                 }
             }

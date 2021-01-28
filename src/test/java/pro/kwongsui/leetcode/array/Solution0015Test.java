@@ -2,26 +2,25 @@ package pro.kwongsui.leetcode.array;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-import java.util.Arrays;
-import java.util.Collections;
-import org.junit.jupiter.api.Test;
+import java.util.List;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.converter.ConvertWith;
+import org.junit.jupiter.params.provider.CsvSource;
+import pro.kwongsui.leetcode.util.IntArrayConverter;
+import pro.kwongsui.leetcode.util.NestedListConverter;
 
 class Solution0015Test {
 
-  @Test
-  void threeSum() {
-    assertIterableEquals(
-        Arrays.asList(Arrays.asList(-1, -1, 2), Arrays.asList(-1, 0, 1)),
-        new Solution0015().threeSum(new int[]{-1, 0, 1, 2, -1, -4}));
-    assertIterableEquals(
-        Collections.emptyList(), new Solution0015().threeSum(new int[0]));
-    assertIterableEquals(
-        Collections.emptyList(), new Solution0015().threeSum(new int[]{0}));
-    assertIterableEquals(
-        Collections.singletonList(Arrays.asList(0, 0, 0)),
-        new Solution0015().threeSum(new int[]{0, 0, 0}));
-    assertIterableEquals(
-        Arrays.asList(Arrays.asList(-2, 0, 2), Arrays.asList(-2, 1, 1)),
-        new Solution0015().threeSum(new int[]{-2, 0, 1, 1, 2}));
+  @ParameterizedTest
+  @CsvSource({
+      "'-1,0,1,2,-1,-4', '-1,-1,2|-1,0,1'",
+      "'', ''",
+      "'0', ''",
+      "'0,0,0', '0,0,0'",
+      "'-2,0,1,1,2', '-2,0,2|-2,1,1'"
+  })
+  void threeSum(@ConvertWith(IntArrayConverter.class) int[] input,
+      @ConvertWith(NestedListConverter.class) List<List<Integer>> expected) {
+    assertIterableEquals(expected, new Solution0015().threeSum(input));
   }
 }

@@ -4,6 +4,21 @@ public class Solution0002 {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode sentinel = new ListNode(-1), p = sentinel;
+        int digit = 0, sum;
+        while (l1 != null || l2 != null || digit != 0) {
+            sum = (l1 == null ? 0 : l1.val) + (l2 == null ? 0 : l2.val) + digit;
+            digit = sum / 10;
+            sum  %= 10;
+            p.next = new ListNode(sum);
+            l1 = l1 == null ? null : l1.next;
+            l2 = l2 == null ? null : l2.next;
+            p = p.next;
+        }
+        return sentinel.next;
+    }
+
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode sentinel = new ListNode(-1), p = sentinel;
         int digit = 0;
         while (l1 != null && l2 != null) {
             int sum = l1.val + l2.val + digit;
@@ -41,7 +56,7 @@ public class Solution0002 {
         return sum >= 10 ? 1 : 0;
     }
 
-    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+    public ListNode addTwoNumbers1(ListNode l1, ListNode l2) {
         StringBuilder builder = new StringBuilder();
         while (l1 != null) {
             builder.insert(0, l1.val);

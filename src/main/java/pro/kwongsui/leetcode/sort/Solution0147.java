@@ -30,7 +30,6 @@ public class Solution0147 {
         ListNode sentinel = new ListNode(-1);
         sentinel.next = head;
         ListNode p = head, q = head.next;
-        p.next = q.next;
         while (q != null) {
             if (p.val <= q.val) {
                 p = q;

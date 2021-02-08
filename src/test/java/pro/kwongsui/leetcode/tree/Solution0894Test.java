@@ -49,7 +49,7 @@ class Solution0894Test {
         }
     }
 
-    private boolean isSameTree(TreeNode p, TreeNode q) {
+    public static boolean isSameTree(TreeNode p, TreeNode q) {
         if (p == null && q == null) {
             return true;
         }

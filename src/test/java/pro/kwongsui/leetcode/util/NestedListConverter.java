@@ -17,13 +17,15 @@ public class NestedListConverter implements ArgumentConverter {
         try {
             List<List<Integer>> list = new ArrayList<>();
             if (((String) source).length() != 0) {
-                for (String o : ((String) source).split("\\|")) {
+                for (String o : ((String) source).split("\\|", -2)) {
                     List<Integer> l = new ArrayList<>();
-                    for (String s : o.split(",")) {
-                        if (s.equals("null")) {
-                            l.add(null);
-                        } else {
-                            l.add(Integer.parseInt(s));
+                    if (o.length() != 0) {
+                        for (String s : o.split(",")) {
+                            if (s.equals("null")) {
+                                l.add(null);
+                            } else {
+                                l.add(Integer.parseInt(s));
+                            }
                         }
                     }
                     list.add(l);

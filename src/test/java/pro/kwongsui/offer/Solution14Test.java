@@ -14,9 +14,10 @@ class Solution14Test {
         "4, 4",
         "5, 6",
         "10, 36",
-        "25, 8748"
+        "25, 8748",
+        "1000, 620946522"
     })
     void cuttingRope(int input, int expected) {
-        assertEquals(expected, new Solution14().cuttingRope(input));
+        assertEquals(expected, new Solution14().cuttingRope2(input));
     }
 }

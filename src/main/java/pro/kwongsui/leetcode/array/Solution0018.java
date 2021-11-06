@@ -15,11 +15,11 @@ public class Solution0018 {
         for (int d = n - 1; d > a + 2; d--) {
           if (d == n - 1 || nums[d] != nums[d + 1]) {
             int b = a + 1, c = d - 1;
-            int min = nums[a] + nums[b] + nums[b + 1] + nums[d];
+            long min = (long) nums[a] + (long) nums[b] + (long) nums[b + 1] + (long) nums[d];
             if (target < min) {
               continue;
             }
-            int max = nums[a] + nums[c - 1] + nums[c] + nums[d];
+            long max = (long) nums[a] + (long) nums[c - 1] + (long) nums[c] + (long) nums[d];
             if (target > max) {
               break;
             }
